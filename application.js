@@ -45,11 +45,6 @@ var drawChart = function(data) {
     title: {
       text: "Thames Tides"
     },
-    toolTip: {
-      // content: function(e) {
-      //   return "hello";
-      // }
-    },
     axisX: {
       minimum: startTime,
       maximum: endTime,
