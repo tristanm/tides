@@ -1,6 +1,3 @@
-var startTime  = moment().startOf("day");
-var endTime = startTime.clone().add(5, "days");
-
 var handleCsv = function(results) {
   var rawData = results.data.slice(3, -1);
   var normalizedData = normalizeData(rawData);
@@ -30,12 +27,10 @@ var normalizeData = function(rawData) {
       var minute = time[1];
       var dateTime = moment([year, month - 1, day, hour, minute]);
 
-      if (dateTime.isAfter(startTime) && dateTime.isBefore(endTime)) {
-        normalizedData.push({
-          x: dateTime.toDate(),
-          y: Number(height)
-        });
-      }
+      normalizedData.push({
+        x: dateTime.toDate(),
+        y: Number(height)
+      });
     });
   });
 
@@ -43,6 +38,9 @@ var normalizeData = function(rawData) {
 };
 
 var drawChart = function(data) {
+  var startTime = moment().startOf("day");
+  var endTime = startTime.clone().add(3, "days");
+
   var chart = new CanvasJS.Chart("chart", {
     title: {
       text: "Thames Tides"
@@ -53,10 +51,10 @@ var drawChart = function(data) {
       // }
     },
     axisX: {
-      minimum: startTime.toDate(),
-      maximum: endTime.toDate(),
-      // interval: 4,
-      labelAngle: 45,
+      minimum: startTime,
+      maximum: endTime,
+      interval: 1,
+      intervalType: "day",
       gridThickness: 2,
       valueFormatString: "DDD D MMM YYYY HH:mm"
     },
