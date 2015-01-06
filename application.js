@@ -51,7 +51,7 @@ var drawChart = function(data) {
       interval: 1,
       intervalType: "day",
       gridThickness: 2,
-      valueFormatString: "DDD D MMM YYYY HH:mm"
+      valueFormatString: "DDD D MMM"
     },
     axisY: {
       suffix: "m"
@@ -60,7 +60,9 @@ var drawChart = function(data) {
       {
         type: "splineArea",
         fillOpacity: 0.1,
-        dataPoints: data
+        dataPoints: data,
+        xValueFormatString: "DDD D MMM HH:mm",
+        yValueFormatString: "0.0m"
       }
     ]
   });
