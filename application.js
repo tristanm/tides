@@ -58,7 +58,8 @@ var drawChart = function(data) {
     },
     data: [
       {
-        type: "spline",
+        type: "splineArea",
+        fillOpacity: 0.1,
         dataPoints: data
       }
     ]
